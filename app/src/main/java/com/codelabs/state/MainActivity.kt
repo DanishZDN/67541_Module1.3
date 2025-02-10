@@ -31,21 +31,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BasicStateCodelabTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
+                Surface(color = MaterialTheme.colorScheme.background) {
                     WellnessScreen()
                 }
             }
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
-fun WellnessScreenPreview() {
+fun PreviewWellnessScreen() {
     BasicStateCodelabTheme {
         WellnessScreen()
-    } // anzay jadi clicker game
+    }
 }
