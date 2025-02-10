@@ -34,12 +34,10 @@ import androidx.compose.runtime.remember
 @Composable
 fun WaterCounter(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(16.dp)) {
-        val count = remember { mutableStateOf(0) }
-        //val count: MutableState<Int> = mutableStateOf(0) <--- this was supposed to be the code lets try
-        // the alternative teehe
+        var count by remember { mutableStateOf(0) }
 
-        Text("You've had ${count.value} glasses.")
-        Button(onClick = { count.value++ }, Modifier.padding(top = 8.dp)) {
+        Text("You've had $count glasses.")
+        Button(onClick = { count++ }, Modifier.padding(top = 8.dp)) {
             Text("Add one")
         }
     }
