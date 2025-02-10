@@ -47,17 +47,13 @@ fun WaterCounter(modifier: Modifier = Modifier) {
 
 @Composable
 fun WellnessScreen(modifier: Modifier = Modifier) {
-    WaterCounter(modifier)
+    StatefulCounter(modifier)
 }
 
 @Composable
 fun StatefulCounter(modifier: Modifier = Modifier) {
     var count by rememberSaveable { mutableStateOf(0) }
-    StatelessCounter(
-        count = count,
-        onIncrement = { count++ },
-        modifier = modifier
-    )
+    StatelessCounter(count, { count++ }, modifier)
 }
 
 @Composable
@@ -66,12 +62,25 @@ fun StatelessCounter(count: Int, onIncrement: () -> Unit, modifier: Modifier = M
         if (count > 0) {
             Text("You've had $count glasses.")
         }
-        Button(
-            onClick = onIncrement,
-            enabled = count < 10,
-            modifier = Modifier.padding(top = 8.dp)
-        ) {
+        Button(onClick = onIncrement, Modifier.padding(top = 8.dp), enabled = count < 10) {
             Text("Add one")
         }
     }
+}
+@Composable
+fun AnotherStatelessMethod(count: Int, onMultiply: () -> Unit) {
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text("Current count: $count")
+        Button(onClick = onMultiply, modifier = Modifier.padding(top = 8.dp)) {
+            Text("Multiply by 2")
+        }
+    }
+} // tambahan supaya anotherstatelessmethod ada calling
+
+@Composable
+fun StatefulCounter() {
+    var count by remember { mutableStateOf(0) }
+
+    StatelessCounter(count, { count++ })
+    AnotherStatelessMethod(count, { count *= 2 })
 }
