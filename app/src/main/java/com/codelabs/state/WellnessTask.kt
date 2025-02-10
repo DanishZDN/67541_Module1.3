@@ -25,4 +25,5 @@ class WellnessTask(
     initialChecked: Boolean = false
 ) {
     var checked: Boolean by mutableStateOf(initialChecked)
+    data class WellnessTask(val id: Int, val label: String)
 }
