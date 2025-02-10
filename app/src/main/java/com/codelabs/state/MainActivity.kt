@@ -47,5 +47,5 @@ class MainActivity : ComponentActivity() {
 fun WellnessScreenPreview() {
     BasicStateCodelabTheme {
         WellnessScreen()
-    }
+    } // anzay jadi clicker game
 }
