@@ -27,12 +27,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.remember
+
 
 
 @Composable
 fun WaterCounter(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(16.dp)) {
-        val count: MutableState<Int> = mutableStateOf(0)
+        val count = remember { mutableStateOf(0) }
+        //val count: MutableState<Int> = mutableStateOf(0) <--- this was supposed to be the code lets try
+        // the alternative teehe
 
         Text("You've had ${count.value} glasses.")
         Button(onClick = { count.value++ }, Modifier.padding(top = 8.dp)) {
@@ -40,6 +44,7 @@ fun WaterCounter(modifier: Modifier = Modifier) {
         }
     }
 }
+
 
 @Composable
 fun WellnessScreen(modifier: Modifier = Modifier) {
